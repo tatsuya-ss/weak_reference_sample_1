@@ -20,6 +20,17 @@ class MainActivity : AppCompatActivity() {
         number = null
         i = null
 
+        try {
+            val map = HashMap<String, Array<Byte?>>()
+            for (j in 0..999999) {
+                val v = arrayOfNulls<Byte>(100000)
+                val k = System.currentTimeMillis().toString()
+                map[k] = v
+            }
+        } catch (oome: OutOfMemoryError) {
+            Log.d("Tatsuya", "OutOfMemoryError!!")
+        }
+
         i = softReference?.get()
         Log.d("Tatsuya", "開放後の呼び出し: ${i}")
     }
